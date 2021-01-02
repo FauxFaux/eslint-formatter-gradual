@@ -1,0 +1,51 @@
+{
+  "name": "eslint-formatter-gradual",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "format": "prettier --write 'lib/**/*.ts' '*.json' '*.js'",
+    "test": "jest",
+    "prepare": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FauxFaux/eslint-formatter-gradual.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FauxFaux/eslint-formatter-gradual/issues"
+  },
+  "homepage": "https://github.com/FauxFaux/eslint-formatter-gradual#readme",
+  "keywords": [
+    "eslint",
+    "eslint-formatter",
+    "eslintformatter"
+  ],
+  "dependencies": {
+    "@stoplight/better-ajv-errors": "0.0.3",
+    "ajv": "^7.0.2",
+    "chalk": "^4.1.0",
+    "strip-ansi": "^6.0.0",
+    "text-table": "^0.2.0",
+    "yargs": "^16.2.0"
+  },
+  "peerDependencies": {
+    "eslint": "^7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/eslint": "^7.2.6",
+    "@types/text-table": "^0.2.1",
+    "@types/yargs": "^15.0.12",
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "@typescript-eslint/parser": "^4.11.0",
+    "eslint": "^7.16.0",
+    "jest": "^27.0.0-next.2",
+    "prettier": "^2.2.1",
+    "typescript": "~4.1.3"
+  }
+}

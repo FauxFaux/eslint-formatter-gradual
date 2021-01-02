@@ -1,0 +1,5 @@
+{
+  "softenRule": {
+    "no-unused-vars": true
+  }
+}
