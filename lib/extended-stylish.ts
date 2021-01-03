@@ -2,11 +2,10 @@ import chalk = require('chalk');
 import stripAnsi = require('strip-ansi');
 import table = require('text-table');
 
-import type { ESLint } from 'eslint';
-type LintResult = ESLint.LintResult;
+import type { ResultWithWarning } from './soften-rule';
 
 // "inspired by" https://github.com/eslint/eslint/blob/aab1b840f9cffb2a76a5c9fe1852961be71dc184/lib/cli-engine/formatters/stylish.js
-export function extendedStylish(results: LintResult[]): string {
+export function extendedStylish(results: ResultWithWarning[]): string {
   let output = '\n';
   let errorCount = 0;
   let warningCount = 0;
@@ -28,20 +27,24 @@ export function extendedStylish(results: LintResult[]): string {
 
     output += `${chalk.underline(result.filePath)}\n`;
 
-    let newMessages = messages.map((message) => {
+    const newMessages = messages.map((message) => {
       let messageType;
 
       if (message.fatal || message.severity === 2) {
-        messageType = chalk.red('error');
+        messageType = chalk.red('error') + '  ';
         summaryColor = 'red';
       } else {
         messageType = chalk.yellow('warning');
       }
 
+      if (message.severityWarning) {
+        messageType += ` (${chalk.yellow(message.severityWarning)})`;
+      }
+
       return [
         '',
-        message.line || 0,
-        message.column || 0,
+        (message.line || 0).toString().padStart(4, ' '),
+        (message.column || 0).toString().padEnd(3, ' '),
         messageType,
         message.message.replace(/([^ ])\.$/u, '$1'),
         chalk.dim(message.ruleId || ''),

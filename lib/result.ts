@@ -1,27 +1,38 @@
-import * as fs from 'fs';
+import { ESLint, Linter } from 'eslint';
+import * as crypto from 'crypto';
+import { Config } from './files';
 
-import type { ESLint } from 'eslint';
-import type { Linter } from 'eslint';
 type LintResult = ESLint.LintResult;
 type LintMessage = Linter.LintMessage;
 type Severity = Linter.Severity;
+type Digest = string;
 
-import { transformResult } from './allow-until';
-import { extendedStylish } from './extended-stylish';
+export function stripPrefix(
+  config: Pick<Config, 'rootDir'>,
+  path: string,
+): string {
+  // TODO: windows paths
 
-export interface ResultWithWarning extends LintResult {
-  messages: MessageWithWarning[];
-}
-
-export interface MessageWithWarning extends Linter.LintMessage {
-  severityWarning?: string;
-}
-
-export function stripPrefix(root: string, path: string): string {
+  const root = config.rootDir + '/';
   if (path.startsWith(root)) {
     return path.substring(root.length);
   }
   return path;
+}
+
+export function hashSource(result: ESLint.LintResult): Digest {
+  if (!result.source) {
+    // TODO: just read it in?
+    throw new Error('no source found for ' + result.filePath);
+  }
+
+  return hash(result.source);
+}
+
+function hash(content: string): string {
+  const sha = crypto.createHash('sha512-256');
+  sha.update(content);
+  return sha.digest('hex');
 }
 
 function countSeverity(messages: LintMessage[], severity: Severity) {

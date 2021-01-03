@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`e2e (bin) 1`] = `
+"
+<rootDir>/test/e2e/one.mjs
+     1:10   warning (ignored until touched)  'foo' is defined but never used  no-unused-vars
+     4:5    warning (ignored for file)       Duplicate key 'a'                no-dupe-keys
+
+<rootDir>/test/e2e/three.mjs
+     2:10   error    'three' is defined but never used  no-unused-vars
+     5:5    error    Duplicate key 'c'                  no-dupe-keys
+
+<rootDir>/test/e2e/two.mjs
+     1:10   error   (was ignored until touched)  'two' is defined but never used  no-unused-vars
+     4:5    warning (ignored for file)           Duplicate key 'b'                no-dupe-keys
+
+✖ 6 problems (3 errors, 3 warnings)
+
+"
+`;
+
+exports[`e2e (formatter) 1`] = `
+"
+<rootDir>/test/e2e/one.mjs
+     1:10   warning (ignored until touched)  'foo' is defined but never used  no-unused-vars
+     4:5    warning (ignored for file)       Duplicate key 'a'                no-dupe-keys
+
+<rootDir>/test/e2e/three.mjs
+     2:10   error    'three' is defined but never used  no-unused-vars
+     5:5    error    Duplicate key 'c'                  no-dupe-keys
+
+<rootDir>/test/e2e/two.mjs
+     1:10   error   (was ignored until touched)  'two' is defined but never used  no-unused-vars
+     4:5    warning (ignored for file)           Duplicate key 'b'                no-dupe-keys
+
+✖ 6 problems (3 errors, 3 warnings)
+
+"
+`;

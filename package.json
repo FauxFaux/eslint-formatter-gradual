@@ -2,9 +2,16 @@
   "name": "eslint-formatter-gradual",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/formatter.js",
+  "bin": {
+    "eslint-gradual": "dist/eslint-gradual/index.js"
+  },
+  "exports": {
+    ".": "dist/formatter.js",
+    "./library": "dist/index.js"
+  },
   "scripts": {
-    "format": "prettier --write 'lib/**/*.ts' '*.json' '*.js'",
+    "format": "prettier --write 'lib/**/*.ts' 'test/**/*.ts' '*.json' '*.js'",
     "test": "jest",
     "prepare": "tsc"
   },
@@ -24,25 +31,25 @@
     "eslintformatter"
   ],
   "dependencies": {
-    "@stoplight/better-ajv-errors": "0.0.3",
-    "ajv": "^7.0.2",
     "chalk": "^4.1.0",
+    "eslint": "^7",
+    "sort-keys": "^4.2.0",
+    "source-map-support": "^0.5.19",
     "strip-ansi": "^6.0.0",
     "text-table": "^0.2.0",
     "yargs": "^16.2.0"
-  },
-  "peerDependencies": {
-    "eslint": "^7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
     "@types/eslint": "^7.2.6",
+    "@types/jest": "^26.0.19",
     "@types/text-table": "^0.2.1",
     "@types/yargs": "^15.0.12",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
+    "escape-string-regexp": "^4.0.0",
     "eslint": "^7.16.0",
     "jest": "^27.0.0-next.2",
     "prettier": "^2.2.1",

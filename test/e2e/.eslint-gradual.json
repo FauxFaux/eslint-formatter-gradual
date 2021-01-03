@@ -1,5 +1,6 @@
 {
   "softenRule": {
-    "no-unused-vars": true
+    "no-dupe-keys": "until-new-file",
+    "no-unused-vars": "until-touched"
   }
 }

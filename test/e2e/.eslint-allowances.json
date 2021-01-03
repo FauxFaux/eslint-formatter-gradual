@@ -1,5 +1,16 @@
 {
-  "index.mjs": {
-    "rules": {}
+  "one.mjs": {
+    "digest": "ca377742d8bacab6d5792c2413167c2a8546cc29a2e786760fc9421597edf171",
+    "rules": {
+      "no-unused-vars": true,
+      "no-dupe-keys": true
+    }
+  },
+  "two.mjs": {
+    "digest": "b127cfe2051c97cc2663b4480e2785fe2731055eb17bce7b8960fd5fcd7bfcce",
+    "rules": {
+      "no-unused-vars": true,
+      "no-dupe-keys": true
+    }
   }
 }
